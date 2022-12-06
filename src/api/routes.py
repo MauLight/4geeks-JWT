@@ -33,3 +33,15 @@ def get_hello():
     }
 
     return jsonify(dictionary)
+
+
+@api.route('/user', methods=['POST'])
+def post_new_user():
+    email = request.json.get('email')
+    password = request.json.get('password')
+
+    user = User()
+    user.email = email
+    user.password = password
+    user.save()
+    return jsonify(user.serialize()), 200
