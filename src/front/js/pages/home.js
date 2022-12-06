@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
-import rigoImageUrl from "../../img/rigo-baby.jpg";
 import "../../styles/home.css";
 
 export const Home = () => {
@@ -8,14 +8,16 @@ export const Home = () => {
 
   useEffect(() => {
     if (store.token && store.token != "" && store.token != undefined)
-      actions.getMessage();
+      actions.getCredentials();
   }, [store.token]);
 
   return (
     <div className="text-center mt-5">
-      <h1>Hello Rigo!!</h1>
-      <p>
-        <img src={rigoImageUrl} />
+      <Link to="/register">
+        <h1>Register</h1>
+      </Link>
+      <p className="mb-0">
+        <img src="https://upload.wikimedia.org/wikipedia/en/1/1e/IchigoKurosakiBleach.jpg" />
       </p>
       <div className="alert alert-info">{store.message}</div>
       <p>

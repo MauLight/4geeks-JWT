@@ -33,7 +33,7 @@ const Login = () => {
   };
 
   if (store.token && store.token != "" && store.token != undefined)
-    navigate("/");
+    navigate("/profile");
 
   return (
     <form

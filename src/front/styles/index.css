@@ -1,3 +1,24 @@
 /* 
     General Styles used on every website (Don't Repeat Yourself)
 */
+
+.btn:hover {
+  color: tomato;
+}
+
+h1:hover {
+  color: tomato;
+
+}
+
+h1 {
+  color: #333333;
+}
+
+a {
+    text-decoration: none;
+}
+
+.user-info {
+  display: contents;
+}

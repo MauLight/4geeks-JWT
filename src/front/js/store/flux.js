@@ -4,6 +4,9 @@ const getState = ({ getStore, getActions, setStore }) => {
       token: null,
 
       message: null,
+
+      credentials: '',
+
       demo: [
         {
           title: "FIRST",
@@ -75,6 +78,25 @@ const getState = ({ getStore, getActions, setStore }) => {
         )
           .then((resp) => resp.json())
           .then((data) => setStore({ message: data.message }))
+          .catch((error) =>
+            console.log("Error loading message from backend", error)
+          );
+      },
+
+      getCredentials: async () => {
+        const store = getStore();
+        const opts = {
+          headers: {
+            Authorization: "Bearer " + store.token,
+          },
+        };
+
+        fetch(
+          "https://3001-4geeksacade-reactflaskh-nybput2jps6.ws-us77.gitpod.io/api/user",
+          opts
+        )
+          .then((resp) => resp.json())
+          .then((data) => setStore({ credentials: data.user }))
           .catch((error) =>
             console.log("Error loading message from backend", error)
           );
